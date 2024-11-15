@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Search</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body id="dark "class="bg-gray-100 min-h-screen bg-cover bg-center" style="background-image: url('');">
+
+
+    <header class="bg-green-600 text-white p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+           
+                
+           
+            
+            <button class="bg-transparent border-2 border-gray-700 rounded-full p-3 hover:bg-gray-200 focus:outline-none transition duration-300 h-16">
+                <img src="logo.png" alt="Logo" class="w-8 h-8">
+            </button>
+    
+            
+            <div class="flex justify-between items-center space-x-4 w-full">
+            
+                
+                <div class="text-5xl font-bold flex-grow whitespace-nowrap" 
+                    style="animation: marquee 10s linear infinite; display: inline-block;">
+                    Recipe Search Now
+                </div>
+                
+               
+                <a href="home.html"
+                    class="bg-white text-green-300 px-4 py-2 rounded-md hover:bg-green-500 hover:text-white transition">
+                    &larr; Back
+                </a>
+            </div>
+    
+        </div>
+    </header>
+    
+
+    
+    
+
+
+
+    <div class="container mx-auto py-10">
+        <h2 class="text-4xl font-extrabold text-red-900 text-center mb-6 mr-96">Find Your Favorite Recipes</h2>
+
+
+
+
+        <div class="flex justify-between items-center mb-6">
+            <input type="text" id="search-bar" placeholder="Search for recipes..."
+                class="w-2/3 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+                oninput="searchFilter()">
+            <select id="filter-options"
+                class="p-3 border border-gray-300 rounded-md ml-4 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+                onchange="searchFilter()">
+                <option value="all">All</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+            </select>
+            <button id="darkModeToggle"
+                class="bg-black text-white px-6 py-2 rounded-md hover:bg-green-700 ml-4 transition" onclick="toggleDarkMode()"> Toggle Dark Mode</button>
+        </div>
+
+        <div id="recipe-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Chicken Chilli Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+    data-title="Chicken Chilli" data-category="dinner">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+        <img src="chilliChiken.webp" alt="Chicken Chilli"
+            class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110">
+    </a>
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-800">Chicken Chilli</h3>
+        <p class="text-gray-600 mt-2">A spicy and flavorful chicken dish perfect for dinner.</p>
+        
+        <!-- Ratings Section -->
+        <div class="flex items-center mt-3">
+            <span class="text-yellow-400">★★★★★</span> 
+            <span class="text-gray-500 ml-2">(4.5)</span> 
+        </div>
+        <div>
+            <p>1025 reviews</p>
+        </div>
+       
+    </div>
+</div>
+
+        
+
+            <!-- Fish Fry Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Fish Fry" data-category="lunch">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2"> <img src="FishFry.webp"
+                        alt="Fish Fry"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"></a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Fish Fry</h3>
+                    <p class="text-gray-600 mt-2">Deliciously crispy fried fish, perfect as a starter.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★★</span> 
+                        <span class="text-gray-500 ml-2">(5)</span> 
+
+                    </div>
+                    <div>
+                        <p>3340 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fried Rice Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Fried Rice" data-category="lunch">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalFriedRice">
+                    <img src="FriedRice.jpg" alt="Fried Rice"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"></a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Fried Rice</h3>
+                    <p class="text-gray-600 mt-2">A classic Asian rice dish with vegetables and flavors.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★</span> <!-- Example static stars for 5-star rating -->
+                        <span class="text-gray-500 ml-2">(4)</span> <!-- Example rating text -->
+                    </div>
+                    <div>
+                        <p>1068 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paneer Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Paneer" data-category="lunch">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalPaneer">
+                    <img src="Pannercurry.jpg" alt="Paneer"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"></a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Paneer butter masala</h3>
+                    <p class="text-gray-600 mt-2">Soft, creamy paneer dish, a favorite for all occasions.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★</span> 
+                        <span class="text-gray-500 ml-2">(4.5)</span> 
+                    </div>
+                    <div>
+                        <p>724 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dal Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Dal" data-category="dinner">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalDal">
+                    <img src="DALFRY.jfif" alt="Dal"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"></a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Dal</h3>
+                    <p class="text-gray-600 mt-2">Delicious dal curry, a staple in Indian cuisine.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★</span>
+                        <span class="text-gray-500 ml-2">(3)</span> 
+                    </div>
+                    <div>
+                        <p>5000 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mix Veg Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Mix Veg" data-category="lunch">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalMixVeg">
+                    <img src="MixvEGFRY.jpg" alt="Mix Veg" class="w-full h-64 object-cover"></a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Mix Veg</h3>
+                    <p class="text-gray-600 mt-2">A colorful mix of vegetables cooked to perfection.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★</span> 
+                        <span class="text-gray-500 ml-2">(4)</span> 
+                    </div>
+                    <div>
+                        <p>102 reviews</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Dosa Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Dosa" data-category="breakfast">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#dosaModal">
+                    <img src="dosha.jpeg" alt="Dosa"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110">
+                </a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Dosa</h3>
+                    <p class="text-gray-600 mt-2">A crispy and delicious South Indian breakfast option.</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★★</span> <!-- Example static stars for 5-star rating -->
+                        <span class="text-gray-500 ml-2">(4.5)</span> <!-- Example rating text -->
+                    </div>
+                    <div>
+                        <p>2025 reviews</p>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Idli" data-category="breakfast">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#idliModal">
+                    <img src="idle.webp" alt="Idli"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110">
+                </a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Idli</h3>
+                    <p class="text-gray-600 mt-2">Soft and fluffy steamed rice cakes, a staple breakfast in South India.
+                    </p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★★</span> <!-- Example static stars for 5-star rating -->
+                        <span class="text-gray-500 ml-2">(4.5)</span> <!-- Example rating text -->
+                    </div>
+                    <div>
+                        <p>800 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aloo Paratha Recipe Card -->
+            <div class="recipe-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
+                data-title="Aloo Paratha" data-category="dinner">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#alooParathaModal">
+                    <img src="aluparatha.jfif" alt="Aloo Paratha"
+                        class="w-full h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110">
+                </a>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Aloo Paratha</h3>
+                    <p class="text-gray-600 mt-2">A classic North Indian breakfast, stuffed with spicy mashed potatoes.
+                    </p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-yellow-400">★★★★★</span> <!-- Example static stars for 5-star rating -->
+                        <span class="text-gray-500 ml-2">(4.5)</span> <!-- Example rating text -->
+                    </div>
+                    <div>
+                        <p>10000 reviews</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Chicken Chilli</h2>
+            <img src="chilliChiken.webp" alt="Chicken Chilli"
+                class="mx-auto rounded-lg shadow-lg max-w-full h-100 object-cover">
+        </div>
+
+
+        <div class="text-center mb-10">
+            <p class="text-lg text-gray-600">A spicy and flavorful chicken dish perfect for dinner.</p>
+        </div>
+
+
+        <div class="text-center mb-10">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Cooking Steps</h3>
+            <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li>Marinate the chicken with spices and set aside for 20 minutes.</li>
+                <li>Heat oil in a pan and sauté onions, garlic, and green chilies.</li>
+                <li>Add marinated chicken and cook until tender and juicy.</li>
+                <li>Serve hot with a garnish of chopped green onions.</li>
+            </ol>
+        </div>
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Gobi Aloo Curry</h2>
+            <img src="gobi.jpg" alt="Gobi Aloo Curry"
+                class="mx-auto rounded-lg shadow-lg max-w-full h-100 object-cover">
+        </div>
+
+        <div class="text-center mb-10">
+            <p class="text-lg text-gray-600">A flavorful and hearty curry made with cauliflower and potatoes in a rich,
+                spiced gravy.</p>
+        </div>
+
+        <div class="text-center mb-10">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Cooking Steps</h3>
+            <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li>Heat oil in a pan and sauté onions, garlic, and ginger until golden.</li>
+                <li>Add chopped tomatoes, turmeric, cumin, coriander powder, and cook until tomatoes soften.</li>
+                <li>Add cauliflower florets and diced potatoes, and cook for a few minutes.</li>
+                <li>Pour in water, cover, and cook until the vegetables are tender.</li>
+                <li>Season with salt, add garam masala, and cook for an additional 5 minutes.</li>
+                <li>Garnish with fresh coriander leaves and serve hot with rice or roti.</li>
+            </ol>
+        </div>
+
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Chiken chilli</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt class="font-semibold text-lg">Step 1</dt>
+                            <dd>Wash the chicken thoroughly under cold water.</dd>
+                            <dt class="font-semibold text-lg">Step 2</dt>
+                            <dd>Cut the chicken into bite-sized pieces.</dd>
+                            <dt class="font-semibold text-lg">Step 3</dt>
+                            <dd>Marinate the chicken with salt, pepper, and your choice of spices for 30 minutes.</dd>
+                            <dt class="font-semibold text-lg">Step 4</dt>
+                            <dd>Prepare the vegetables – chop onions, bell peppers, and green chilies.</dd>
+                            <dt class="font-semibold text-lg">Step 5</dt>
+                            <dd>Heat oil in a pan over medium heat and fry the marinated chicken until golden brown.
+                            </dd>
+                            <dt class="font-semibold text-lg">Step 6</dt>
+                            <dd>Remove the chicken from the pan and set it aside.</dd>
+                            <dt class="font-semibold text-lg">Step 7</dt>
+                            <dd>In the same pan, sauté chopped onions and bell peppers until soft.</dd>
+                            <dt class="font-semibold text-lg">Step 8</dt>
+                            <dd>Add minced garlic and ginger, and cook until fragrant.</dd>
+                            <dt class="font-semibold text-lg">Step 9</dt>
+                            <dd>Add the fried chicken back into the pan and mix well with the vegetables.</dd>
+                            <dt class="font-semibold text-lg">Step 10</dt>
+                            <dd>Garnish with cilantro and serve hot with rice or naan.</dd>
+                        </dl>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabel2">Fish Fry Recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-gray-800">
+                        <dl>
+                            <dt class="font-semibold text-lg">Step 1</dt>
+                            <dd>Clean and gut the fish, removing scales and bones as necessary.</dd>
+                            <dt class="font-semibold text-lg">Step 2</dt>
+                            <dd>Marinate the fish with turmeric, salt, pepper, and lemon juice for 20 minutes.</dd>
+                            <dt class="font-semibold text-lg">Step 3</dt>
+                            <dd>Prepare a batter using rice flour, cornstarch, and a pinch of salt. Coat the fish evenly
+                                with the batter.</dd>
+                            <dt class="font-semibold text-lg">Step 4</dt>
+                            <dd>Heat oil in a pan over medium heat for frying the fish.</dd>
+                            <dt class="font-semibold text-lg">Step 5</dt>
+                            <dd>Once the oil is hot, gently slide the battered fish into the pan and fry until golden
+                                brown
+                                on both sides.</dd>
+                            <dt class="font-semibold text-lg">Step 6</dt>
+                            <dd>Remove the fish from the pan and drain on paper towels to remove excess oil.</dd>
+                            <dt class="font-semibold text-lg">Step 7</dt>
+                            <dd>Garnish the fried fish with fresh coriander leaves and slices of onion.</dd>
+                            <dt class="font-semibold text-lg">Step 8</dt>
+                            <dd>Serve the fish fry hot with a side of mint chutney or a tangy dip.</dd>
+                            <dt class="font-semibold text-lg">Step 9</dt>
+                            <dd>Pair with a fresh salad or crispy fries for a complete meal.</dd>
+                            <dt class="font-semibold text-lg">Step 10</dt>
+                            <dd>Enjoy the crispy, flavorful fish fry as a perfect starter or snack.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalFriedRice" tabindex="-1" aria-labelledby="exampleModalLabelFriedRice"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabelFriedRice">Fried Rice Recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Step 1</dt>
+                            <dd>Cook rice and set aside to cool.</dd>
+                            <dt>Step 2</dt>
+                            <dd>Chop vegetables like carrots, peas, and beans.</dd>
+                            <dt>Step 3</dt>
+                            <dd>Heat oil in a pan and sauté garlic and onions.</dd>
+                            <dt>Step 4</dt>
+                            <dd>Add the chopped vegetables and cook for a few minutes.</dd>
+                            <dt>Step 5</dt>
+                            <dd>Add the cooked rice, soy sauce, and mix well.</dd>
+                            <dt>Step 6</dt>
+                            <dd>Season with salt, pepper, and garnish with spring onions.</dd>
+                            <dt>Step 7</dt>
+                            <dd>Serve hot as a side or main dish.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalPaneer" tabindex="-1" aria-labelledby="exampleModalLabelPaneer"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabelPaneer">Paneer Recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Step 1</dt>
+                            <dd>Cube the paneer and set aside.</dd>
+                            <dt>Step 2</dt>
+                            <dd>Prepare a marinade with yogurt, turmeric, chili powder, and garam masala.</dd>
+                            <dt>Step 3</dt>
+                            <dd>Coat the paneer in the marinade and let it rest for 30 minutes.</dd>
+                            <dt>Step 4</dt>
+                            <dd>Heat oil in a pan and cook the marinated paneer until golden.</dd>
+                            <dt>Step 5</dt>
+                            <dd>Serve the paneer with naan or rice, garnished with cilantro.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalDal" tabindex="-1" aria-labelledby="exampleModalLabelDal"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabelDal">Dal Recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Step 1</dt>
+                            <dd>Wash the lentils and cook them with turmeric until soft.</dd>
+                            <dt>Step 2</dt>
+                            <dd>Prepare the tempering with ghee, cumin, garlic, and ginger.</dd>
+                            <dt>Step 3</dt>
+                            <dd>Pour the tempering over the cooked dal and stir well.</dd>
+                            <dt>Step 4</dt>
+                            <dd>Simmer for 10 minutes to blend the flavors.</dd>
+                            <dt>Step 5</dt>
+                            <dd>Serve with rice or roti, garnished with cilantro.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalMixVeg" tabindex="-1" aria-labelledby="exampleModalLabelMixVeg"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="exampleModalLabelMixVeg">Mix Veg Recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Step 1</dt>
+                            <dd>Chop a variety of vegetables like carrots, beans, peas, and potatoes.</dd>
+                            <dt>Step 2</dt>
+                            <dd>Heat oil in a pan and sauté cumin seeds, garlic, and onions.</dd>
+                            <dt>Step 3</dt>
+                            <dd>Add the chopped vegetables and cook for a few minutes.</dd>
+                            <dt>Step 4</dt>
+                            <dd>Season with turmeric, chili powder, garam masala, and salt.</dd>
+                            <dt>Step 5</dt>
+                            <dd>Add water and cook until the vegetables are tender.</dd>
+                            <dt>Step 6</dt>
+                            <dd>Serve hot with chapati or rice.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="dosaModal" tabindex="-1" aria-labelledby="dosaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="dosaLabel">Dosa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt class="font-semibold text-lg">Step 1</dt>
+                            <dd>Soak rice and urad dal for at least 4 hours.</dd>
+                            <dt class="font-semibold text-lg">Step 2</dt>
+                            <dd>Grind the soaked ingredients into a smooth batter and let it ferment overnight.</dd>
+                            <dt class="font-semibold text-lg">Step 3</dt>
+                            <dd>Heat a non-stick pan, pour a ladleful of batter, and spread it in a circular motion.</dd>
+                            <dt class="font-semibold text-lg">Step 4</dt>
+                            <dd>Drizzle oil around the edges, cook until crispy and golden.</dd>
+                            <dt class="font-semibold text-lg">Step 5</dt>
+                            <dd>Serve hot with coconut chutney and sambar.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="idliModal" tabindex="-1" aria-labelledby="idliLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="idliLabel">Idli</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt class="font-semibold text-lg">Step 1</dt>
+                            <dd>Soak rice and urad dal separately for 4-5 hours.</dd>
+                            <dt class="font-semibold text-lg">Step 2</dt>
+                            <dd>Grind the urad dal and rice into a smooth batter, mix, and ferment overnight.</dd>
+                            <dt class="font-semibold text-lg">Step 3</dt>
+                            <dd>Pour the batter into idli molds and steam for 10-12 minutes.</dd>
+                            <dt class="font-semibold text-lg">Step 4</dt>
+                            <dd>Serve hot with coconut chutney and sambar.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="alooParathaModal" tabindex="-1" aria-labelledby="alooParathaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                        <h5 class="modal-title" id="alooParathaLabel">Aloo Paratha</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt class="font-semibold text-lg">Step 1</dt>
+                            <dd>Boil potatoes, peel, and mash them.</dd>
+                            <dt class="font-semibold text-lg">Step 2</dt>
+                            <dd>Add spices (salt, chili powder, cumin) and mix well with the mashed potatoes.</dd>
+                            <dt class="font-semibold text-lg">Step 3</dt>
+                            <dd>Roll out a small dough ball, place the filling in the center, and seal it.</dd>
+                            <dt class="font-semibold text-lg">Step 4</dt>
+                            <dd>Roll the stuffed dough into a flatbread.</dd>
+                            <dt class="font-semibold text-lg">Step 5</dt>
+                            <dd>Cook on a hot griddle, adding ghee on both sides until golden brown.</dd>
+                            <dt class="font-semibold text-lg">Step 6</dt>
+                            <dd>Serve hot with yogurt or pickle.</dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Recipe Reviews</title>
+            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        </head>
+
+        <body class="bg-gray-100">
+
+
+            <footer class="bg-gray-800 text-white py-8">
+                <div class="max-w-screen-xl mx-auto">
+                    <div class="space-y-8">
+
+
+                        <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                            <img src="man1.jfif" alt="User 1" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">John Doe</h3>
+                                <div class="flex items-center mb-2">
+                                    <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    <span class="text-gray-600 ml-2">(4/5)</span>
+                                </div>
+                                <p class="text-gray-700">The recipes are easy to follow, and the results are amazing! I
+                                    love the dinner options.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                            <img src="man2.jfif" alt="User 2" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Munna</h3>
+                                <div class="flex items-center mb-2">
+                                    <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    <span class="text-gray-600 ml-2">(4/5)</span>
+                                </div>
+                                <p class="text-gray-700">The recipes are excellent, and the results are amazing! I love
+                                    the lunch options.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                            <img src="girl1.jpg" alt="User 3" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Puspa</h3>
+                                <div class="flex items-center mb-2">
+                                    <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    <span class="text-gray-600 ml-2">(5/5)</span>
+                                </div>
+                                <p class="text-gray-700">The recipes are easy to follow, and the results are excellent!
+                                    I love the breakfast options.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="mt-8 text-center">
+                            <button onclick="toggleForm()"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Give Your Rating
+                            </button>
+                        </div>
+
+
+                        <div id="ratingForm" class="hidden mt-4 bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+                            <form>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                                    <input type="text" id="name"
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        placeholder="Your name" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2"
+                                        for="rating">Rating</label>
+                                    <select id="rating"
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        required>
+                                        <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; - 5/5</option>
+                                        <option value="4">&#9733;&#9733;&#9733;&#9733; - 4/5</option>
+                                        <option value="3">&#9733;&#9733;&#9733; - 3/5</option>
+                                        <option value="2">&#9733;&#9733; - 2/5</option>
+                                        <option value="1">&#9733; - 1/5</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2"
+                                        for="review">Review</label>
+                                    <textarea id="review"
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        placeholder="Write your review here..." required></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold text-gray-800">Sign up for Gmail Updates</h3>
+                            <p class="text-gray-600 mt-2">Stay updated with the latest recipes, tips, and more. Subscribe with your Gmail address below!</p>
+                            
+                            <form id="signupForm" class="mt-4 flex flex-col sm:flex-row gap-4">
+                                <input type="email" id="email" name="email" placeholder="Enter your Gmail address"
+                                    class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                <button type="submit"
+                                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 ease-in-out">
+                                    Sign Up
+                                </button>
+                            </form>
+                
+                            <!-- Success Message -->
+                            <p id="successMessage" class="text-green-600 mt-3 hidden">Thank you for signing up!</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+        </body>
+
+        </html>
+
+        <script src="script.js">
+        </script>
+</body>
+
+</html>

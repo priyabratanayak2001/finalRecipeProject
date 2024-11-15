@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="1000;url=recipe_search.html">
+    <title>Login</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    
+    <div class="min-h-screen flex">
+        
+        <div class="w-1/2 bg-cover bg-center" style="background-image: url('recipe.jpg');">
+           
+        </div>
+
+        
+        <div class="w-1/2 bg-gray-100 flex flex-col items-center justify-center p-8">
+            <div class="text-center py-12">
+                <p class="text-2xl text-green font-semibold">Start cooking delicious and personalized meals today!</p>
+            </div>
+            <div class="max-w-sm w-full bg-white p-8 rounded-lg shadow-lg">
+
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Login to Start Cooking</h2>
+                <form action="#" method="post">
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-700 font-semibold mb-2">Username:</label>
+                        <input type="text" id="username" name="username" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-700 font-semibold mb-2">Password:</label>
+                        <input type="password" id="password" name="password" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div class="mb-4">
+                        <button type="button" onclick="submitclick()"
+                            class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition">Login</button>
+                    </div>
+                </form>
+
+                <p class="text-center text-gray-600">Don't have an account? <a href="newuser.html"
+                        class="text-green-600 hover:underline">Sign up here</a></p>
+                        <p class="text-center text-gray-600"> <a href="newuser.html"
+                            class="text-green-600 hover:underline">forgott??</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
